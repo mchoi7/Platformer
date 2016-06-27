@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 abstract class Instance {
-    private double x, y;
+    protected double x, y, width, height;
     private boolean active, visible, solid;
     protected int state;
 
@@ -52,4 +52,38 @@ abstract class Instance {
     protected abstract void physics();
     protected abstract void move();
     protected abstract void state();
+
+    protected boolean isIntersecting(Instance instance) {
+        return 2 * (x - instance.getX()) < width + instance.getWidth() && 2 * (y - instance.getY()) < height + instance.getHeight();
+    }
+
+    protected abstract void collidesWith(Instance instance);
+
+    private double getX() {
+        return x;
+    }
+
+    private double getY() {
+        return y;
+    }
+
+    private double getWidth() {
+        return width;
+    }
+
+    private double getHeight() {
+        return height;
+    }
+
+    private boolean isActive() {
+        return active;
+    }
+
+    private boolean isVisible() {
+        return visible;
+    }
+
+    private boolean isSolid() {
+        return solid;
+    }
 }

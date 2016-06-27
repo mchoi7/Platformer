@@ -13,11 +13,14 @@ class GameFrame extends JFrame implements Runnable, KeyListener {
         setResizable(false);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
         addKeyListener(this);
         createBufferStrategy(3);
         new Thread(this).start();
         running = true;
+    }
+
+    public static void main(String[] args) {
+        new GameFrame();
     }
 
     public void run() {
